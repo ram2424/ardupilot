@@ -49,6 +49,12 @@ void ModeSteering::update()
         calc_steering_from_lateral_acceleration(_desired_lat_accel, reversed);
     }
 
+    	//If speed is zero, set steering to zero
+    if (is_zero(speed))
+    {
+    	g2.motors.set_steering(0.0f);
+    }
+
     // run speed to throttle controller
     calc_throttle(desired_speed, true);
 }
